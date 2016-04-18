@@ -1,5 +1,15 @@
 export default function() {
 
+  this.get('/api/authors', function() {
+    return {
+      users: [
+        { id: 1, name: 'Zelda' },
+        { id: 2, name: 'Link' },
+        { id: 3, name: 'Epona' },
+      ]
+    }
+  });
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*

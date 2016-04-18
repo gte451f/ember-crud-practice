@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    podModulePrefix: 'crud-practice/pods',
     modulePrefix: 'crud-practice',
     environment: environment,
     baseURL: '/',
