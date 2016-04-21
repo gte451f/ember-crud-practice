@@ -1,4 +1,17 @@
 <section class="container">
-    <h3>Authors</h3>
-    {{outlet}}
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Authors</h3>
+            <div class="list-group">
+                {{#each model as |author|}}
+                    {{#link-to 'authors.item' author.id class="list-group-item"}}
+                        #{{author.id}} - {{author.name}} (Age: {{author.age}})
+                    {{/link-to}}
+                {{/each}}
+            </div>
+        </div>
+        <div class="col-md-9">
+            {{outlet}}
+        </div>
+    </div>
 </section>

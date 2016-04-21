@@ -1,0 +1,12 @@
+<h3>{{model.name}}</h3>
+
+<h3>Collected Works</h3>
+<ul class="list-group">
+    {{#each model.books as |book|}}
+        <li class="list-group-item">
+            <span class="badge">{{book.rating}}</span>
+            {{book.title}}
+        </li>
+    {{/each}}
+</ul>
+{{outlet}}
