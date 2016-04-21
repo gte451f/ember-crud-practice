@@ -4,7 +4,5 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   age: DS.attr('number'),
 
-  books: DS.hasMany('book', {
-    async: true
-  })
+  books: DS.hasMany('book')
 });

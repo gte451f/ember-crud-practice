@@ -2,11 +2,25 @@ export default function () {
 
   this.get('/authors/:id', function (db, request) {
     let id = request.params.id;
+    let author = db.authors.find(id);
+
+    // load book
+    let books = [];
+    db.books.where({author_id: id}).forEach(function (item) {
+      item.type = 'books';
+      books.push(item);
+    });
+
     return {
       data: {
         type: 'authors',
         id: id,
-        attributes: db.authors.find(id)
+        attributes: author,
+        relationships: {
+          books: {
+            data: books
+          }
+        }
       }
     };
   });
@@ -22,7 +36,13 @@ export default function () {
   this.get('/books/:id', function (db, request) {
     let id = request.params.id;
     let book = db.books.find(id);
+
+    // load author
     let author = db.authors.where({id: book.author_id});
+    author = author[0];
+    // plug in the type
+    author.type = 'author';
+
     return {
       data: {
         type: 'books',
@@ -30,7 +50,7 @@ export default function () {
         attributes: book,
         relationships: {
           author: {
-            data: author[0]
+            data: author
           }
         }
       }
