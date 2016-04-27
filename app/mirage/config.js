@@ -1,5 +1,17 @@
 export default function () {
 
+
+  // this.patch('/authors/:id');
+
+  // this.patch('/authors/:id', (db, request) => {
+  //   let params = JSON.parse(request.requestBody);
+  //   let model = params.data.attributes;
+  //   db.model.update(model);
+  //   return params;
+  // });
+
+
+  this.put('/authors/:id');
   this.get('/authors/:id', function (db, request) {
     let id = request.params.id;
     let author = db.authors.find(id);
@@ -24,7 +36,6 @@ export default function () {
       }
     };
   });
-
   this.get('/authors', function (db, request) {
     return {
       data: db.authors.map(attrs => (
@@ -33,6 +44,7 @@ export default function () {
     };
   });
 
+  this.put('/books/:id');
   this.get('/books/:id', function (db, request) {
     let id = request.params.id;
     let book = db.books.find(id);
