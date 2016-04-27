@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{owner.fullName}}
+            {{#link-to 'owner.edit' class="pull-right btn btn-xs btn-default"}}
+                {{fa-icon 'pencil'}}
+            {{/link-to}}
+        </h3>
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Relationship</dt>
+            <dd>{{owner.relationship}}</dd>
+
+            <dt>Email</dt>
+            <dd>{{owner.email}}</dd>
+
+            <dt>Gender</dt>
+            <dd>{{owner.gender}}</dd>
+
+
+        </dl>
+        <div class="pull-right">{{owner/account-item account=owner.account}}</div>
+    </div>
+</div>
