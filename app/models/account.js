@@ -11,6 +11,5 @@ export default DS.Model.extend({
   owners: DS.hasMany('owner', {
     async: false
   }),
-  accountAddrs: DS.hasMany('account-addr', {
-  })
+  accountAddrs: DS.hasMany('account-addr', {})
 });
