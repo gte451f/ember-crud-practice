@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 /**
  * insert logic to handle errors gobally
  * primary focus is to create hook where API errors can be dealt with in a consistant way
@@ -22,7 +24,7 @@ export function initialize(appInstance) {
     // print out unexpected errors
     // console.error(err);
 
-    
+
     // print out api errors
     if (!Ember.isEmpty(err.errors)) {
       err.errors.forEach((error) => {

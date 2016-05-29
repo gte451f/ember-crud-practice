@@ -22,6 +22,7 @@ Router.map(function () {
     this.route('item', {path: '/:account_id'});
     this.route('add');
   });
+  this.route('test');
 });
 
 export default Router;

@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function (params) {
-    return this.store.findAll('owner', {with: 'accounts'});
+    return this.store.queryRecord('owner', {with: 'accounts'});
   }
 });
