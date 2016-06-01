@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">
             {{owner.fullName}}
-            {{#link-to 'owner.edit' class="pull-right btn btn-xs btn-default"}}
+            {{#link-to 'owner.edit' owner class="pull-right btn btn-xs btn-default"}}
                 {{fa-icon 'pencil'}}
             {{/link-to}}
         </h3>
@@ -17,8 +17,6 @@
 
             <dt>Gender</dt>
             <dd>{{owner.gender}}</dd>
-
-
         </dl>
         <div class="pull-right">{{owner/account-item account=owner.account}}</div>
     </div>

@@ -4,7 +4,13 @@ export default Ember.Route.extend({
   notify: Ember.inject.service(),
 
   model: function(params) {
-    return this.store.queryRecord('owner', {user_id: params.owner_id, with: 'accounts'});
+    return this.store.queryRecord('owner', {id: params.id, with: 'accounts'});
+  },
+
+  setupController: function(controller, resolved) {
+    // pluck out first object since queryRecord doesn't seem to be working
+    var model = resolved.get('firstObject');
+    this._super(controller, model);
   },
 
   actions: {
@@ -26,16 +32,15 @@ export default Ember.Route.extend({
         self.transitionTo('owner.item', model.id);
       }, function(reason) {
         // Bubble up to global error handler
-        if (reason && reason.status === 409) {
+        if (!Ember.isEmpty(reason.errors) && reason.errors[0].status === 422) {
           // Expected rejection, inform user and swallow error
-          this.get('notify').alert('Email address already registered.');
+          self.get('notify').alert('Email address already registered.');
         } else {
           // Bubble up to global error handler
           console.debug(reason);
           throw reason;
         }
       });
-
     }
   }
 });
